@@ -30,12 +30,16 @@ else(WIN32)
 	set(GLUT_LIBRARY glut)
 endif(WIN32)
 
+# MO add compiler flags -> compiler standard (>= c++11)
+SET(GCC_STANDARD    "-std=c++11")
+SET( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_STANDARD}" )
+
 # ADD INCLUDE DIRECTORIES
 include_directories(${PROJECT_SOURCE_DIR})
 
 # GROUP SOURCES AND CREATE PROJECT
 SET(HEADER_FILES
-  "Main.h"
+  "main.h"
   "NURBS_Curve.h"
   "NURBS_Surface.h"
   "Vec3.h"
@@ -44,7 +48,7 @@ SET(HEADER_FILES
   "RenderingSurface.h"
 )
 SET(SOURCE_FILES  
-  "Main.cpp"
+  "main.cpp"
   "NURBS_Curve.cpp"
   "NURBS_Surface.cpp"
   "RenderingCurve.cpp"

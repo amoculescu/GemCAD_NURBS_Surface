@@ -12,7 +12,7 @@ class NURBS_Surface {
 public:
 
 	// class data:
-	std::vector<std::vector<Vec4f>> controlPoints;	// control mesh, first index for v direction, second for u. So P[i] is a vector of control points in u direction. A vector of control points in v direction has to be generated manually.
+	std::vector<std::vector<Vec4f> > controlPoints;	// control mesh, first index for v direction, second for u. So P[i] is a vector of control points in u direction. A vector of control points in v direction has to be generated manually.
 	std::vector<float> knotVectorU;					// knot vector in u direction
 	std::vector<float> knotVectorV;					// knot vector in v direction
 	unsigned int degree;							// degree for both directions
@@ -21,7 +21,7 @@ public:
 	NURBS_Surface();
 
 	// constructor which takes given control mesh P, knot vector U and V and degree p
-	NURBS_Surface(const std::vector<std::vector<Vec4f>>& controlPoints_, const std::vector<float>& knotVectorU_, const std::vector<float>& knotVectorV_, const unsigned int degree_);
+	NURBS_Surface(const std::vector<std::vector<Vec4f> >& controlPoints_, const std::vector<float>& knotVectorU_, const std::vector<float>& knotVectorV_, const unsigned int degree_);
 
 	// returns false if the knot vector is not sorted or if the dimensions of knot vector, control points and p do not match
 	bool isValidNURBS();

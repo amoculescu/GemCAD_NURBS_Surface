@@ -3,7 +3,7 @@
 // mailto:felix.schuwirth@igd.fraunhofer.de                                  //
 //                                                                           //
 // GRIS - Graphisch Interaktive Systeme                                      //
-// Technische Universität Darmstadt                                          //
+// Technische Universitï¿½t Darmstadt                                          //
 // Fraunhoferstrasse 5                                                       //
 // D-64283 Darmstadt, Germany                                                //
 //                                                                           //
@@ -19,6 +19,7 @@
 #include <stdio.h>		// cout
 #include <iostream>		// cout
 #include "RenderingSurface.h"
+#include <algorithm>
 
 // ==============
 // === BASICS ===
@@ -301,7 +302,7 @@ void mousePressed(int button, int state, int x, int y)
 
 void mouseMoved(int x, int y)
 {
-	// rotate (cap angleY within [-85°, +85°])
+	// rotate (cap angleY within [-85ï¿½, +85ï¿½])
 	if (mouseButton == GLUT_LEFT_BUTTON)
 	{
 		angleX = fmod(angleX + (x-mouseX) * mouseSensitivy, 360.0f);

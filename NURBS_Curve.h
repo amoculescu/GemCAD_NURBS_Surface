@@ -3,7 +3,7 @@
 // mailto:felix.schuwirth@igd.fraunhofer.de                                  //
 //                                                                           //
 // GRIS - Graphisch Interaktive Systeme                                      //
-// Technische Universität Darmstadt                                          //
+// Technische Universitï¿½t Darmstadt                                          //
 // Fraunhoferstrasse 5                                                       //
 // D-64283 Darmstadt, Germany                                                //
 // ========================================================================= //
@@ -14,6 +14,7 @@
 #include <stdlib.h>		// standard library
 #include <vector>		// std::vector<>
 
+#include <algorithm>
 #include "Vec4.h"		// vector (x, y, z, w)
 
 class NURBSCurve {
@@ -47,10 +48,10 @@ public:
 
 
 	// evaluate the curve at parameters T with deBoor.  Returns the evaluated points and their tangents.
-	std::pair<std::vector<Vec4f>, std::vector<Vec4f>> evaluateCurveAt(const std::vector<float>& T);
+	std::pair<std::vector<Vec4f>, std::vector<Vec4f> > evaluateCurveAt(const std::vector<float>& T);
 
 	// evaluate the curve with deBoor algorithm at numberSamples sample points. Returns the evaluated points and their tangents.
-	std::pair<std::vector<Vec4f>, std::vector<Vec4f>> evaluateCurveAt(const size_t numberSamples);
+	std::pair<std::vector<Vec4f>, std::vector<Vec4f> > evaluateCurveAt(const size_t numberSamples);
 
 private:
 

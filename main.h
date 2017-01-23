@@ -3,7 +3,7 @@
 // mailto:felix.schuwirth@igd.fraunhofer.de                                  //
 //                                                                           //
 // GRIS - Graphisch Interaktive Systeme                                      //
-// Technische Universität Darmstadt                                          //
+// Technische Universitï¿½t Darmstadt                                          //
 // Fraunhoferstrasse 5                                                       //
 // D-64283 Darmstadt, Germany                                                //
 //                                                                           //
@@ -28,8 +28,8 @@
 // some points used for drawing point & line example
 std::vector<NURBS_Surface> NURBSs;
 unsigned int nrPoints;
-std::vector<std::vector<Vec4f>> points;
-std::vector<std::vector<Vec3f>> normals;
+std::vector<std::vector<Vec4f> > points;
+std::vector<std::vector<Vec3f> > normals;
 bool enableNormal, enablePoints, enableWire, enableSurface, enableCtrl;
 int enableEval;
 int nurbsSelect;
