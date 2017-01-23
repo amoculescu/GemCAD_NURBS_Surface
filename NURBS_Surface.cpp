@@ -40,6 +40,7 @@ NURBS_Surface::NURBS_Surface()
 
 	degree = 2;
 
+	transposeMesh();
 	isValidNURBS();
 }
 
@@ -49,6 +50,7 @@ NURBS_Surface::NURBS_Surface(const std::vector<std::vector<Vec4f>>& controlPoint
 	, knotVectorV(knotVectorV_)
 	, degree(degree_)
 {
+	transposeMesh();
 	isValidNURBS();
 }
 
@@ -107,15 +109,34 @@ Vec4f NURBS_Surface::evaluteDeBoor(const float u, const float v, Vec4f& tangentU
 
 	// TODO: evaluate the surface by evaluating curves
 	// ===============================================
+	NURBSCurve tmp;
+	std::vector<Vec4f> ControlPointsTmp = new std::vector<Vec4f>();
+	Vec4f& dummyTangent;
 
 	// evaluate the patch at u in all rows
+	for (int i = 0; i < controlPoints.size(); i++) {
+		tmp = new NURBSCurve(controlPoints[i], knotVectorU, degree);
+		Vec4f pointU = tmp.evaluteDeBoor(u, dummyTangent);
+		ControlPointsTmp.push_back(pointU);
+	}
 
 	// evaluate curve-at-u at v
+	tmp = new NURBSCurve(ControlPointsTmp, knotVectorV, degree);
+	evaluatedPoint = tmp.evaluteDeBoor(v, tangentV);
+
 
 	// evaluate the patch at v in all columns
+	ControlPointsTmp.clear();
 	
-	// evaluate curve-at-v at u
+	for (int i = 0; i < controlPoints.size(); i++) {
+		tmp = new NURBSCurve(controlPointsTransposed[i], knotVectorV, degree);
+		Vec4f pointV = tmp.evaluteDeBoor(v, dummyTangent);
+		ControlPointsTmp.push_back(pointV);
+	}
 
+	// evaluate curve-at-v at u
+	tmp = new NURBSCurve(ControlPointsTmp, knotVectorU, degree);
+	tmp.evaluteDeBoor(u, tangentU);
 	// ===============================================
 
 	return evaluatedPoint;
@@ -141,4 +162,14 @@ std::ostream& operator<< (std::ostream& os, NURBS_Surface& nurbsSurface)
 	// knot vector verification
 	nurbsSurface.isValidNURBS();
 	return os;
+}
+
+void NURBS_Surface::transposeMesh()
+{
+	for (int i = 0; i < controlPoints.size(); i++) {
+
+		for (int j = 0; j < controlPoints.size(); j++) {
+			controlPointsTransposed[i][j] = controlPoints[j][i];
+		}
+	}
 }

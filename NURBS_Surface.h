@@ -17,6 +17,8 @@ public:
 	std::vector<float> knotVectorV;					// knot vector in v direction
 	unsigned int degree;							// degree for both directions
 
+	std::vector<std::vector<Vec4f> > controlPointsTransposed; // transposed control mesh
+
 	// empty constructor which creates a test surface: quarter cylinder
 	NURBS_Surface();
 
@@ -29,6 +31,8 @@ public:
 	// evaluate the curve at parameter t with deBoor (inserting a knot until its multiplicity is p). also returns the tangent at the evaluated point.
 	Vec4f evaluteDeBoor(const float u, const float v, Vec4f& tangentU, Vec4f& tangentV);
 
+	// set transposed controlPoints mesh
+	void transposeMesh();
 };
 
 // ostream << operator. E.g. use "std::cout << nurbs << std::endl;"
