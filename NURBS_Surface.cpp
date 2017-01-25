@@ -127,7 +127,7 @@ Vec4f NURBS_Surface::evaluteDeBoor(const float u, const float v, Vec4f& tangentU
 
 	// evaluate the patch at v in all columns
 	ControlPointsTmp.clear();
-	
+
 	for (int i = 0; i < controlPoints.size(); i++) {
 		tmp = NURBSCurve(controlPointsTransposed[i], knotVectorV, degree);
 		Vec4f pointV = tmp.evaluteDeBoor(v, tangentU);

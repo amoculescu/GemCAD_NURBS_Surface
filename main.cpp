@@ -118,6 +118,16 @@ void calculatePoints()
 	// emplace the resulting nurbs,points and normals into the vectors
 	// =====================================================
 
+	// Create examples
+	NURBS_Surface* surf = new NURBS_Surface();
+	NURBSs.push_back(*surf);
+
+	// calculate Points
+
+
+	// calculate Normals
+
+
 
 	// =====================================================
 }

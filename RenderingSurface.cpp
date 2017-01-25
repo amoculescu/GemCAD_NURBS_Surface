@@ -28,11 +28,34 @@ void drawNormals(const std::vector<Vec4f> &points, const std::vector<Vec3f> &nor
 }
 void drawNURBSSurfaceCtrlP(const NURBS_Surface &surface)
 {
-	// TODO: draw control polygon an points (homogenized)
-	// =====================================================
+// TODO: draw control polygon an points (homogenized)
+// =====================================================
+	glBegin(GL_LINE_STRIP);
+	Vec3f testcol = Vec3f(1.0, 0.0, 0.0);
+	glColor3fv(&testcol.x); //color
+
+	int umax = surface.controlPoints[1].size();
+	int vmax = surface.controlPoints.size();
+	for (int v = 0; v < vmax; v++) {
+
+		for (int u = 0; u < umax; u++) {
+			Vec3f point = { surface.controlPoints[v][u].x
+					/ surface.controlPoints[v][u].w,
+					surface.controlPoints[v][u].y
+							/ surface.controlPoints[v][u].w,
+					surface.controlPoints[v][u].z
+							/ surface.controlPoints[v][u].w };
+			glVertex3fv(&point.x);
+
+		}
+
+	}
+
+	glEnd();
 
 
-	// =====================================================
+
+// =====================================================
 }
 
 void drawNURBSSurface(std::vector<Vec4f> &points, const std::vector<Vec3f> &normals, const int numPointsU, const int numPointsV, bool enableSurf, bool enableWire)
