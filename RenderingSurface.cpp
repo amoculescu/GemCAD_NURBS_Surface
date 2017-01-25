@@ -8,11 +8,24 @@
 #include <NURBS_Surface.h>
 #include <algorithm>
 
+	// fmod
+#include <stdio.h>		// cout
+#include <iostream>
+
 void drawSurfacePoints(const std::vector<Vec4f> &points)
 {
 	// TODO: draw points of the surface
 	// note: Vec4f provides a method to homogenize a vector
 	// =====================================================
+
+	for (Vec4f point : points) {
+		glBegin(GL_POINTS);
+		Vec3f glpoint = {point.homogenized().x, point.homogenized().y, point.homogenized().z};
+// TODO remove cout
+//		std::cout << glpoint << std::endl;
+		glColor3fv(&glpoint.x);
+		glEnd();
+	}
 
 
 	// =====================================================
@@ -30,14 +43,15 @@ void drawNURBSSurfaceCtrlP(const NURBS_Surface &surface)
 {
 // TODO: draw control polygon an points (homogenized)
 // =====================================================
-	glBegin(GL_LINE_STRIP);
-	Vec3f testcol = Vec3f(1.0, 0.0, 0.0);
-	glColor3fv(&testcol.x); //color
+
 
 	int umax = surface.controlPoints[1].size();
 	int vmax = surface.controlPoints.size();
 	for (int v = 0; v < vmax; v++) {
 
+		glBegin(GL_LINE_STRIP);
+			Vec3f testcol = Vec3f(1.0, 0.0, 0.0);
+			glColor3fv(&testcol.x); //color
 		for (int u = 0; u < umax; u++) {
 			Vec3f point = { surface.controlPoints[v][u].x
 					/ surface.controlPoints[v][u].w,
@@ -47,11 +61,31 @@ void drawNURBSSurfaceCtrlP(const NURBS_Surface &surface)
 							/ surface.controlPoints[v][u].w };
 			glVertex3fv(&point.x);
 
+
 		}
+		glEnd();
 
 	}
 
-	glEnd();
+	for (int v = 0; v < vmax; v++) {
+
+			glBegin(GL_LINE_STRIP);
+				Vec3f testcol = Vec3f(1.0, 0.0, 0.0);
+				glColor3fv(&testcol.x); //color
+			for (int u = 0; u < umax; u++) {
+				Vec3f point = { surface.controlPointsTransposed[v][u].x
+						/ surface.controlPointsTransposed[v][u].w,
+						surface.controlPointsTransposed[v][u].y
+								/ surface.controlPointsTransposed[v][u].w,
+						surface.controlPointsTransposed[v][u].z
+								/ surface.controlPointsTransposed[v][u].w };
+				glVertex3fv(&point.x);
+
+
+			}
+			glEnd();
+
+		}
 
 
 

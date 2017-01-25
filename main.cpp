@@ -108,28 +108,58 @@ void initializeGL()
 }
 
 void calculatePoints()
-{
+ {
 	points.clear();
 	normals.clear();
 	NURBSs.clear();
 
-	// TODO: create two NURBS surfaces with different degrees k >= 2
-	// calculate the points and their normals
-	// emplace the resulting nurbs,points and normals into the vectors
-	// =====================================================
+// TODO: create two NURBS surfaces with different degrees k >= 2
+// calculate the points and their normals
+// emplace the resulting nurbs,points and normals into the vectors
+// =====================================================
 
-	// Create examples
-	NURBS_Surface* surf = new NURBS_Surface();
-	NURBSs.push_back(*surf);
+// Create examples
+	NURBS_Surface surf = NURBS_Surface();
+	NURBSs.push_back(surf);
 
-	// calculate Points
+// calculate Points & normals for each NURBS
+
+	for (NURBS_Surface surfp : NURBSs) {
+
+		std::vector<Vec4f> nurbs_points = std::vector<Vec4f>();
+		std::vector<Vec3f> normalsVec = std::vector<Vec3f>();
+
+		for (int i = 0; i <= nrPoints; i++) {
+			for (int j = 0; j <= nrPoints; j++) {
+				float ui = i / nrPoints;
+				float vj = j / nrPoints;
+				Vec4f tangentU = Vec4f();
+				Vec4f tangentV = Vec4f();
+
+				Vec4f point = surfp.evaluteDeBoor(ui, vj, tangentU, tangentV);
 
 
-	// calculate Normals
+				nurbs_points.push_back(point);
 
 
+				std::cout << point << std::endl;
 
-	// =====================================================
+				tangentU.homogenize();
+				tangentV.homogenize();
+
+// normal product
+				Vec3f tu = { tangentU.x, tangentU.y, tangentU.z };
+				Vec3f tv = { tangentV.x, tangentV.y, tangentV.z };
+
+				Vec3f normal = tu ^ tv;
+				normalsVec.push_back(normal);
+			}
+		}
+
+		points.push_back(nurbs_points);
+		normals.push_back(normalsVec);
+
+	}
 }
 
 void reshape(GLint width, GLint height)
