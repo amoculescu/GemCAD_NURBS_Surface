@@ -17,16 +17,20 @@ void drawSurfacePoints(const std::vector<Vec4f> &points)
 	// TODO: draw points of the surface
 	// note: Vec4f provides a method to homogenize a vector
 	// =====================================================
+	glBegin(GL_POINTS);
+
+
+	Vec3f testcol = Vec3f(1.0, 1.0, 1.0);
+	glColor3fv(&testcol.x); //color
 
 	for (Vec4f point : points) {
-		glBegin(GL_POINTS);
+
 		Vec3f glpoint = {point.homogenized().x, point.homogenized().y, point.homogenized().z};
 // TODO remove cout
 //		std::cout << glpoint << std::endl;
-		glColor3fv(&glpoint.x);
-		glEnd();
+		glVertex3fv(&glpoint.x);
 	}
-
+	glEnd();
 
 	// =====================================================
 }
@@ -35,6 +39,21 @@ void drawNormals(const std::vector<Vec4f> &points, const std::vector<Vec3f> &nor
 	// TODO: draw normals as lines (homogenized)
 	// note: Vec4f provides a method to homogenize a vector
 	// =====================================================
+	for (int i = 0; i < points.size(); i++) {
+		glBegin(GL_LINE_STRIP);
+
+		Vec3f testcol = Vec3f(1.0, 1.0, 0.2);
+		glColor3fv(&testcol.x); //color
+			Vec4f point = points[i];
+			Vec3f glpoint = {point.homogenized().x, point.homogenized().y, point.homogenized().z};
+
+			glVertex3fv(&glpoint.x);
+			Vec3f glnormal =(glpoint +  0.1f*normals[i]);
+			glVertex3fv(&glnormal.x);
+
+		glEnd();
+
+	}
 
 
 	// =====================================================
@@ -131,11 +150,55 @@ void evaluateNURBSSurface(const NURBS_Surface &surface,float u, float v, bool vF
 
 	if (vFirst)
 	{
-		// 1. draw the nurbs curves and its control polygons first in v direction
-		   
-		// 2. then the resulting curve and its control polygon at v in u direction.
-		   
-		// 3. draw the evaluated surface point
+		Vec4f evaluatedPoint;
+
+			// TO DO: evaluate the surface by evaluating curves
+			// ===============================================
+
+			NURBSCurve tmp = NURBSCurve(surface.controlPoints[0], surface.knotVectorU, surface.degree); // to avoid is valid nurbs print
+			std::vector<Vec4f> ControlPointsTmp = std::vector<Vec4f>();
+			Vec4f dummyTangent = Vec4f();
+
+			// evaluate the patch at u in all rows
+			for (int i = 0; i < surface.controlPoints.size(); i++) {
+
+				tmp = NURBSCurve(surface.controlPoints[i], surface.knotVectorU, surface.degree);
+
+				Vec4f pointU = tmp.evaluteDeBoor(u, dummyTangent); // dummy tangentV
+
+				ControlPointsTmp.push_back(pointU);
+			}
+
+			// evaluate curve-at-u at v
+			tmp = NURBSCurve(ControlPointsTmp, surface.knotVectorV, surface.degree);
+			Vec4f point = tmp.evaluteDeBoor(v, dummyTangent);
+
+			drawNURBS_H(tmp, colorCurveU);
+			drawNURBSCtrlPolygon_H(tmp, colorPolyU);
+
+			// evaluate the patch at v in all columns
+			ControlPointsTmp.clear();
+
+			for (int i = 0; i < surface.controlPoints.size(); i++) {
+				tmp = NURBSCurve(surface.controlPointsTransposed[i], surface.knotVectorV, surface.degree);
+				Vec4f pointV = tmp.evaluteDeBoor(v, dummyTangent); // dummyTangentU
+				ControlPointsTmp.push_back(pointV);
+			}
+
+			// evaluate curve-at-v at u
+			tmp = NURBSCurve(ControlPointsTmp, surface.knotVectorU, surface.degree);
+			tmp.evaluteDeBoor(u, dummyTangent);
+			// ===============================================
+
+			drawNURBS_H(tmp, colorCurveV);
+			drawNURBSCtrlPolygon_H(tmp, colorPolyV);
+
+			glBegin(GL_POINTS);
+			glColor3fv(&colorPoint.x);
+			Vec3f glpoint = {point.homogenized().x, point.homogenized().y, point.homogenized().z};
+			glVertex3fv(&glpoint.x);
+			glEnd();
+
 
 	}
 	else

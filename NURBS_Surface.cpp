@@ -3,6 +3,10 @@
 #include <stdio.h>		// cout
 #include <iostream>		// cout
 
+
+#include <stdio.h>		// cout
+#include <iostream>
+
 NURBS_Surface::NURBS_Surface()
 {
 	// test surface: quarter cylinder
@@ -107,23 +111,26 @@ Vec4f NURBS_Surface::evaluteDeBoor(const float u, const float v, Vec4f& tangentU
 	if (!isValidNURBS())
 		return Vec4f();
 
-	// TODO: evaluate the surface by evaluating curves
+	// TO DO: evaluate the surface by evaluating curves
 	// ===============================================
-	NURBSCurve tmp;
+
+	NURBSCurve tmp = NURBSCurve(controlPoints[0], knotVectorU, degree); // to avoid is valid nurbs print
 	std::vector<Vec4f> ControlPointsTmp = std::vector<Vec4f>();
 //	Vec4f& dummyTangent = tangentU;
 
 	// evaluate the patch at u in all rows
 	for (int i = 0; i < controlPoints.size(); i++) {
+
 		tmp = NURBSCurve(controlPoints[i], knotVectorU, degree);
+
 		Vec4f pointU = tmp.evaluteDeBoor(u, tangentV); // dummy tangentV
+
 		ControlPointsTmp.push_back(pointU);
 	}
 
 	// evaluate curve-at-u at v
 	tmp = NURBSCurve(ControlPointsTmp, knotVectorV, degree);
 	evaluatedPoint = tmp.evaluteDeBoor(v, tangentV);
-
 
 	// evaluate the patch at v in all columns
 	ControlPointsTmp.clear();

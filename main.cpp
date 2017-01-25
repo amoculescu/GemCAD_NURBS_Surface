@@ -129,14 +129,17 @@ void calculatePoints()
 		std::vector<Vec4f> nurbs_points = std::vector<Vec4f>();
 		std::vector<Vec3f> normalsVec = std::vector<Vec3f>();
 
+
 		for (int i = 0; i <= nrPoints; i++) {
 			for (int j = 0; j <= nrPoints; j++) {
-				float ui = i / nrPoints;
-				float vj = j / nrPoints;
+				float ui = 1.0f * i / nrPoints;
+				float vj = 1.0f * j / nrPoints;
 				Vec4f tangentU = Vec4f();
 				Vec4f tangentV = Vec4f();
 
+				std::cout << "testxx" << std::endl;
 				Vec4f point = surfp.evaluteDeBoor(ui, vj, tangentU, tangentV);
+				std::cout << "testxx2" << std::endl;
 
 
 				nurbs_points.push_back(point);
