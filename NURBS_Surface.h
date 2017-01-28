@@ -5,6 +5,7 @@
 #include <vector>			// std::vector<>
 
 #include "NURBS_Curve.h"
+#include "RenderingCurve.h"
 #include "Vec4.h"
 
 class NURBS_Surface {
