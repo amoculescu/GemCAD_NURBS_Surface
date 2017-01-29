@@ -121,19 +121,19 @@ void drawNURBSSurface(std::vector<Vec4f> &points, const std::vector<Vec3f> &norm
 		glColor3f(0.0f,0.0f,1.0f);
 		// TODO: draw surface wire mesh
 		// =====================================================
-	/*	for (int i = 0; i < points.size() - 2; i++) {
+		for (int i = 0; i < numPointsV; i++) {
 			Vec4f hpoint1 = points[i].homogenized();
-			Vec4f hpoint2 = points[i+1].homogenized();
-			Vec4f hpoint3 = points[i+2].homogenized();
+			Vec4f hpoint2 = points[numPointsV + i + 1].homogenized();
+			Vec4f hpoint3 = points[numPointsV + i + 2].homogenized();
 			glBegin(GL_TRIANGLE_STRIP);
 			glNormal3f(normals[i].x, normals[i].y, normals[i].z);
 			glVertex3f(hpoint1.x, hpoint1.y, hpoint1.z);
-			glNormal3f(normals[i + 1].x, normals[i + 1].y, normals[i + 1].z);
+			glNormal3f(normals[numPointsV + i + 1].x, normals[numPointsV + i + 1].y, normals[numPointsV + i + 1].z);
 			glVertex3f(hpoint2.x, hpoint2.y, hpoint2.z);
-			glNormal3f(normals[i + 2].x, normals[i + 2].y, normals[i + 2].z);
+			glNormal3f(normals[numPointsV + i + 2].x, normals[numPointsV + i + 2].y, normals[numPointsV + i + 2].z);
 			glVertex3f(hpoint3.x, hpoint3.y, hpoint3.z);
 			glEnd();
-		}*/
+		}
 		// =====================================================
 
 	}
