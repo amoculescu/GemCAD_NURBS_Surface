@@ -121,6 +121,32 @@ void drawNURBSSurface(std::vector<Vec4f> &points, const std::vector<Vec3f> &norm
 		glColor3f(0.0f,0.0f,1.0f);
 		// TODO: draw surface wire mesh
 		// =====================================================
+		for (int i = 0; i < points.size() - 1; i++) {
+			Vec4f wpoint1 = points[i].homogenized();
+			Vec4f wpoint2 = points[i + 1].homogenized();
+			glBegin(GL_LINE_STRIP);
+			glVertex3f(wpoint1.x, wpoint1.y, wpoint1.z);
+			glVertex3f(wpoint2.x, wpoint2.y, wpoint2.z);
+		}
+
+		for (int j = 0; j < points.size() - numPointsV - 1; j++) {
+			Vec4f wpoint3 = points[j].homogenized();
+			Vec4f wpoint4 = points[numPointsV + j + 1].homogenized();
+			glBegin(GL_LINE_STRIP);
+			glVertex3f(wpoint3.x, wpoint3.y, wpoint3.z);
+			glVertex3f(wpoint4.x, wpoint4.y, wpoint4.z);
+			glEnd();
+		}
+		// =====================================================
+
+	}
+
+	if (enableSurf)
+	{
+		glEnable(GL_LIGHTING);
+		glColor3f(0.99f, 0.99f, 0.99f);
+		// TODO: draw surface with quads
+		// =====================================================
 		for (int i = 0; i < points.size() - numPointsV - 2; i++) {
 			Vec4f hpoint1 = points[i].homogenized();
 			Vec4f hpoint2 = points[numPointsV + i + 1].homogenized();
@@ -147,32 +173,6 @@ void drawNURBSSurface(std::vector<Vec4f> &points, const std::vector<Vec3f> &norm
 			glVertex3f(hpoint3.x, hpoint3.y, hpoint3.z);
 			glEnd();
 		}
-		// =====================================================
-
-	}
-
-	if (enableSurf)
-	{
-		glEnable(GL_LIGHTING);
-		glColor3f(0.99f, 0.99f, 0.99f);
-		// TODO: draw surface with quads
-		// =====================================================
-	/*	for (int i = 0; i < points.size() - 3; i = i++) {
-			Vec4f hpoint1 = points[i].homogenized();
-			Vec4f hpoint2 = points[i + 1].homogenized();
-			Vec4f hpoint3 = points[i + 2].homogenized();
-			Vec4f hpoint4 = points[i + 3].homogenized();
-			glBegin(GL_QUAD_STRIP);
-			glNormal3f(normals[i].x, normals[i].y, normals[i].z);
-			glVertex3f(hpoint1.x, hpoint1.y, hpoint1.z);
-			glNormal3f(normals[i + 1].x, normals[i + 1].y, normals[i + 1].z);
-			glVertex3f(hpoint2.x, hpoint2.y, hpoint2.z);
-			glNormal3f(normals[i + 2].x, normals[i + 2].y, normals[i + 2].z);
-			glVertex3f(hpoint3.x, hpoint3.y, hpoint3.z);
-			glNormal3f(normals[i + 3].x, normals[i + 3].y, normals[i + 3].z);
-			glVertex3f(hpoint4.x, hpoint4.y, hpoint4.z);
-			glEnd();
-		}*/
 		// =====================================================
 	}
 }
