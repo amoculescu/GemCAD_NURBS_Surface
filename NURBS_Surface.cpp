@@ -281,7 +281,7 @@ NURBS_Surface::NURBS_Surface(int example) {
 		std::vector<Vec4f> pRow8;
 		std::vector<Vec4f> pRow9;
 		
-		pRow1 = pRow2;
+		pRow2 = pRow1;
 
 		for (int i = 0; i < pRow1.size(); i++)
 		{
