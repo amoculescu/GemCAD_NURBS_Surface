@@ -193,7 +193,7 @@ NURBS_Surface::NURBS_Surface(int example) {
 
 		transposeMesh();
 		isValidNURBS();
-	} if (example == 2) {
+	} else if (example == 2) {
 		// test surface: quarter cylinder.
 		std::vector<Vec4f> pRow1;
 		pRow1.push_back(Vec4f(0.0f, 1.0f, 0.0f, 1.0f));
