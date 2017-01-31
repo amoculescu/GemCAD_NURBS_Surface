@@ -194,7 +194,9 @@ NURBS_Surface::NURBS_Surface(int example) {
 		transposeMesh();
 		isValidNURBS();
 	} else if (example == 2) {
+
 		// test surface: quarter cylinder.
+
 		std::vector<Vec4f> pRow1;
 		pRow1.push_back(Vec4f(0.0f, 1.0f, 0.0f, 1.0f));
 		pRow1.push_back(Vec4f(1.0f, 1.0f, 0.0f, 1.0f / sqrtf(2.0f)));
@@ -238,28 +240,129 @@ NURBS_Surface::NURBS_Surface(int example) {
 		knotVectorU.push_back(0.0f);
 		knotVectorU.push_back(0.0f);
 		knotVectorU.push_back(0.0f);
-		knotVectorU.push_back(0.0f);
+		knotVectorU.push_back(0.5f);
 		knotVectorU.push_back(0.5f);
 		knotVectorU.push_back(1.0f);
 		knotVectorU.push_back(1.0f);
 		knotVectorU.push_back(1.0f);
-		knotVectorU.push_back(1.0f);
 
-		knotVectorV.push_back(0.0f);
 		knotVectorV.push_back(0.0f);
 		knotVectorV.push_back(0.0f);
 		knotVectorV.push_back(0.0f);
 		knotVectorV.push_back(0.5f);
-		knotVectorV.push_back(1.0f);
+		knotVectorV.push_back(0.5f);
 		knotVectorV.push_back(1.0f);
 		knotVectorV.push_back(1.0f);
 		knotVectorV.push_back(1.0f);
 
-		degree = 3;
+		degree = 2;
 
 		transposeMesh();
 		isValidNURBS();
 
+	}
+	else if (example == 3) {
+		std::vector<Vec4f> pRow1;
+		pRow1.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f));
+		pRow1.push_back(Vec4f(1.0f, 1.0f, 0.0f, 0.7071f));
+		pRow1.push_back(Vec4f(0.0f, 1.0f, 0.0f, 1.0f));
+		pRow1.push_back(Vec4f(-1.0f, 1.0f, 0.0f, 0.7071f));
+		pRow1.push_back(Vec4f(-1.0f, 0.0f, 0.0f, 1.0f));
+		pRow1.push_back(Vec4f(-1.0f, -1.0f, 0.0f, 0.7071f));
+		pRow1.push_back(Vec4f(0.0f, -1.0f, 0.0f, 1.0f));
+		pRow1.push_back(Vec4f(1.0f, -1.0f, 0.0f, 0.7071f));
+		pRow1.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f));
+		controlPoints.push_back(pRow1);
+
+		std::vector<Vec4f> pRow2;
+		std::vector<Vec4f> pRow3;
+		std::vector<Vec4f> pRow4;
+		std::vector<Vec4f> pRow5;
+		std::vector<Vec4f> pRow6;
+		std::vector<Vec4f> pRow7;
+		std::vector<Vec4f> pRow8;
+		std::vector<Vec4f> pRow9;
+		
+		for (int i = 0; i < pRow1.size(); i++)
+		{
+			pRow2[i] = pRow1[i];
+			pRow2[i].z += 1;
+			
+		}
+		controlPoints.push_back(pRow2);
+		
+		for (int i = 0; i < pRow1.size(); i++)
+		{
+			pRow3[i] = pRow2[i];
+			pRow3[i].z += 1;
+		}
+		controlPoints.push_back(pRow3);
+
+		for (int i = 0; i < pRow1.size(); i++)
+		{
+			pRow4[i] = pRow3[i];
+			pRow4[i].z += 1;
+		}
+		controlPoints.push_back(pRow4);
+		for (int i = 0; i < pRow1.size(); i++)
+		{
+			pRow5[i] = pRow4[i];
+			pRow5[i].z += 1;
+		}
+		controlPoints.push_back(pRow5);
+		for (int i = 0; i < pRow1.size(); i++)
+		{
+			pRow6[i] = pRow5[i];
+			pRow6[i].z += 1;
+		}
+		controlPoints.push_back(pRow6);
+		for (int i = 0; i < pRow1.size(); i++)
+		{
+			pRow7[i] = pRow6[i];
+			pRow7[i].z += 1;
+		}
+		controlPoints.push_back(pRow7);
+
+		for (int i = 0; i < pRow1.size(); i++)
+		{
+			pRow8[i] = pRow7[i];
+			pRow8[i].z += 1;
+		}
+		controlPoints.push_back(pRow8);
+		
+		for (int i = 0; i < pRow1.size(); i++)
+		{
+			pRow9[i] = pRow8[i];
+			pRow9[i].z += 1;
+		}
+		controlPoints.push_back(pRow9);
+
+		knotVectorU.push_back(0);
+		knotVectorU.push_back(0);
+		knotVectorU.push_back(0);
+		knotVectorU.push_back(.25);
+		knotVectorU.push_back(.25);
+		knotVectorU.push_back(.5);
+		knotVectorU.push_back(.5);
+		knotVectorU.push_back(.75);
+		knotVectorU.push_back(.75);
+		knotVectorU.push_back(1);
+		knotVectorU.push_back(1);
+		knotVectorU.push_back(1);
+
+		knotVectorV.push_back(0);
+		knotVectorV.push_back(0);
+		knotVectorV.push_back(0);
+		knotVectorV.push_back(.25);
+		knotVectorV.push_back(.25);
+		knotVectorV.push_back(.5);
+		knotVectorV.push_back(.5);
+		knotVectorV.push_back(.75);
+		knotVectorV.push_back(.75);
+		knotVectorV.push_back(1);
+		knotVectorV.push_back(1);
+		knotVectorV.push_back(1);
+		
 	}
 }
 /*
