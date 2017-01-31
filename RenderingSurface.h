@@ -3,7 +3,7 @@
 // mailto:felix.schuwirth@igd.fraunhofer.de                                  //
 //                                                                           //
 // GRIS - Graphisch Interaktive Systeme                                      //
-// Technische Universität Darmstadt                                          //
+// Technische Universitï¿½t Darmstadt                                          //
 // Fraunhoferstrasse 5                                                       //
 // D-64283 Darmstadt, Germany                                                //
 // ========================================================================= //
@@ -17,7 +17,7 @@
 class NURBS_Surface;
 
 void drawSurfacePoints(const std::vector<Vec4f> &points);
-void drawNormals(const std::vector<Vec4f> &points, const std::vector<Vec3f> &normals);
+void drawNormals(const std::vector<Vec4f> &points, const std::vector<Vec3f> &normals, int tangentSize);
 void drawNURBSSurfaceCtrlP(const NURBS_Surface &surface);
 
 void drawNURBSSurface(std::vector<Vec4f> &points, const std::vector<Vec3f> &normals, const int numPointsU, const int numPointsV, bool enableSurf, bool enableWire);

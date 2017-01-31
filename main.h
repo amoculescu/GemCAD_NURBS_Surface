@@ -34,6 +34,7 @@ bool enableNormal, enablePoints, enableWire, enableSurface, enableCtrl;
 int enableEval;
 int nurbsSelect;
 float u, v;
+int tangentSize;
 
 // ===========================================================
 

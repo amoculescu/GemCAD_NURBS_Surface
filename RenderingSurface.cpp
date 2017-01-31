@@ -34,7 +34,7 @@ void drawSurfacePoints(const std::vector<Vec4f> &points)
 
 	// =====================================================
 }
-void drawNormals(const std::vector<Vec4f> &points, const std::vector<Vec3f> &normals)
+void drawNormals(const std::vector<Vec4f> &points, const std::vector<Vec3f> &normals, int tangentSize)
 {
 	// TODO: draw normals as lines (homogenized)
 	// note: Vec4f provides a method to homogenize a vector
@@ -48,7 +48,7 @@ void drawNormals(const std::vector<Vec4f> &points, const std::vector<Vec3f> &nor
 			Vec3f glpoint = {point.homogenized().x, point.homogenized().y, point.homogenized().z};
 
 			glVertex3fv(&glpoint.x);
-			Vec3f glnormal =(glpoint +  0.1f*normals[i]);
+			Vec3f glnormal =(glpoint +  0.025f*tangentSize*normals[i]);
 			glVertex3fv(&glnormal.x);
 
 		glEnd();

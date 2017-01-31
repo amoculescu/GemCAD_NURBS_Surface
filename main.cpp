@@ -27,6 +27,7 @@
 
 int main(int argc, char** argv)
 {
+	tangentSize = 10;
 	// initialize openGL window
 	glutInit(&argc, argv);
 	glutInitWindowPosition(300, 200);
@@ -224,7 +225,7 @@ void drawObjects()
 			drawSurfacePoints(ps);
 
 		if(enableNormal && !ps.empty() && !ns.empty())
-			drawNormals(ps, ns);
+			drawNormals(ps, ns, tangentSize);
 
 		if (enableCtrl)
 			drawNURBSSurfaceCtrlP(nurbs);
@@ -326,6 +327,15 @@ void keyPressed(unsigned char key, int x, int y)
 		enableEval = (enableEval + 1) % 3;
 		glutPostRedisplay();
 		break;
+
+	case '+':
+		++tangentSize;
+		glutPostRedisplay();
+		break;
+	case '-':
+		--tangentSize;
+		glutPostRedisplay();
+		break;
 	case 'a':
 	case 'A':
 		nurbsSelect = (nurbsSelect + 1) % NURBSs.size();
@@ -334,7 +344,6 @@ void keyPressed(unsigned char key, int x, int y)
 
 	// TODO: place custom functions on button events here to present your results
 	// ==========================================================================
-
 
 	// ==========================================================================
 	}
