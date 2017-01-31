@@ -12,6 +12,7 @@
 #include <stdio.h>		// cout
 #include <iostream>
 
+
 void drawSurfacePoints(const std::vector<Vec4f> &points)
 {
 	// TODO: draw points of the surface
@@ -42,7 +43,7 @@ void drawNormals(const std::vector<Vec4f> &points, const std::vector<Vec3f> &nor
 	for (int i = 0; i < points.size(); i++) {
 		glBegin(GL_LINE_STRIP);
 
-		Vec3f testcol = Vec3f(1.0, 1.0, 0.2);
+		Vec3f testcol = Vec3f(0.5 + 0.01 * tangentSize, 0.9, 0.5 - 0.01 * tangentSize);
 		glColor3fv(&testcol.x); //color
 			Vec4f point = points[i];
 			Vec3f glpoint = {point.homogenized().x, point.homogenized().y, point.homogenized().z};

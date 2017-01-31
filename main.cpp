@@ -275,6 +275,7 @@ void keyPressed(unsigned char key, int x, int y)
 	case 'r' :
 	case 'R' :
 		setDefaults();
+		tangentSize = 10;
 		glutPostRedisplay();	// use this whenever 3d data changed to redraw the scene
 		break;
 	case 'l':
