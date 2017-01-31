@@ -281,56 +281,65 @@ NURBS_Surface::NURBS_Surface(int example) {
 		std::vector<Vec4f> pRow8;
 		std::vector<Vec4f> pRow9;
 		
+		pRow1 = pRow2;
+
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow2[i] = pRow1[i];
+			
 			pRow2[i].z += 1;
 			
 		}
 		controlPoints.push_back(pRow2);
 		
+		pRow3 = pRow2;
+
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow3[i] = pRow2[i];
 			pRow3[i].z += 1;
 		}
 		controlPoints.push_back(pRow3);
 
+		pRow4 = pRow3;
+
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow4[i] = pRow3[i];
 			pRow4[i].z += 1;
 		}
 		controlPoints.push_back(pRow4);
+		pRow5 = pRow4;
+
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow5[i] = pRow4[i];
 			pRow5[i].z += 1;
 		}
 		controlPoints.push_back(pRow5);
+		pRow6 = pRow5;
+
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow6[i] = pRow5[i];
 			pRow6[i].z += 1;
 		}
 		controlPoints.push_back(pRow6);
+		pRow7 = pRow6;
+
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow7[i] = pRow6[i];
 			pRow7[i].z += 1;
 		}
 		controlPoints.push_back(pRow7);
 
+		pRow8 = pRow7;
+
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow8[i] = pRow7[i];
 			pRow8[i].z += 1;
 		}
 		controlPoints.push_back(pRow8);
 		
+		pRow9 = pRow8;
+
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow9[i] = pRow8[i];
 			pRow9[i].z += 1;
 		}
 		controlPoints.push_back(pRow9);
@@ -361,6 +370,11 @@ NURBS_Surface::NURBS_Surface(int example) {
 		knotVectorV.push_back(1);
 		knotVectorV.push_back(1);
 		
+
+		degree = 2;
+
+		transposeMesh();
+		isValidNURBS();
 	}
 }
 /*
