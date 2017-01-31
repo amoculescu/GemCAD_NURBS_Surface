@@ -5,6 +5,7 @@
 #include <vector>			// std::vector<>
 
 #include "NURBS_Curve.h"
+#include "RenderingCurve.h"
 #include "Vec4.h"
 
 class NURBS_Surface {
@@ -21,6 +22,8 @@ public:
 
 	// empty constructor which creates a test surface: quarter cylinder
 	NURBS_Surface();
+	// constructor who creates multiple examples
+	NURBS_Surface(int example);
 
 	// constructor which takes given control mesh P, knot vector U and V and degree p
 	NURBS_Surface(const std::vector<std::vector<Vec4f> >& controlPoints_, const std::vector<float>& knotVectorU_, const std::vector<float>& knotVectorV_, const unsigned int degree_);

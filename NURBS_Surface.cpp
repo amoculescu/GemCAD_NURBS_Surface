@@ -3,6 +3,10 @@
 #include <stdio.h>		// cout
 #include <iostream>		// cout
 
+
+#include <stdio.h>		// cout
+#include <iostream>
+
 NURBS_Surface::NURBS_Surface()
 {
 	// test surface: quarter cylinder
@@ -43,6 +47,215 @@ NURBS_Surface::NURBS_Surface()
 	transposeMesh();
 	isValidNURBS();
 }
+
+/*
+NURBS_Surface::NURBS_Surface() {
+
+	
+	std::vector<Vec4f> pRow1;
+	pRow1.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f));
+	pRow1.push_back(Vec4f(1.0f, 1.0f, 0.0f, 0.7071f));
+	pRow1.push_back(Vec4f(0.0f, 1.0f, 0.0f, 1.0f));
+	pRow1.push_back(Vec4f(-1.0f, 1.0f, 0.0f, 0.7071f));
+	pRow1.push_back(Vec4f(-1.0f, 0.0f, 0.0f, 1.0f));
+	pRow1.push_back(Vec4f(-1.0f, -1.0f, 0.0f, 0.7071f));
+	pRow1.push_back(Vec4f(0.0f, -1.0f, 0.0f, 1.0f));
+	pRow1.push_back(Vec4f(1.0f, -1.0f, 0.0f, 0.7071f));
+	pRow1.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f));
+	controlPoints.push_back(pRow1);
+
+	std::vector<Vec4f> pRow2;
+	pRow2.push_back(Vec4f(1.0f, 0.0f, 2.0f, 1.0f));
+	pRow2.push_back(Vec4f(1.0f, 1.0f, 2.0f, 0.7071f));
+	pRow2.push_back(Vec4f(0.0f, 1.0f, 2.0f, 1.0f));
+	pRow2.push_back(Vec4f(-1.0f, 1.0f, 2.0f, 0.7071f));
+	pRow2.push_back(Vec4f(-1.0f, 0.0f, 2.0f, 1.0f));
+	pRow2.push_back(Vec4f(-1.0f, -1.0f, 2.0f, 0.7071f));
+	pRow2.push_back(Vec4f(0.0f, -1.0f, 2.0f, 1.0f));
+	pRow2.push_back(Vec4f(1.0f, -1.0f, 2.0f, 0.7071f));
+	pRow2.push_back(Vec4f(1.0f, 0.0f, 2.0f, 1.0f));
+	controlPoints.push_back(pRow2);
+
+	std::vector<Vec4f> pRow3;
+	pRow3.push_back(Vec4f(1.0f, 0.0f, 3.0f, 1.0f));
+	pRow3.push_back(Vec4f(1.0f, 1.0f, 3.0f, 0.7071f));
+	pRow3.push_back(Vec4f(0.0f, 1.0f, 3.0f, 1.0f));
+	pRow3.push_back(Vec4f(-1.0f, 1.0f, 3.0f, 0.7071f));
+	pRow3.push_back(Vec4f(-1.0f, 0.0f, 3.0f, 1.0f));
+	pRow3.push_back(Vec4f(-1.0f, -1.0f, 3.0f, 0.7071f));
+	pRow3.push_back(Vec4f(0.0f, -1.0f, 3.0f, 1.0f));
+	pRow3.push_back(Vec4f(1.0f, -1.0f, 3.0f, 0.7071f));
+	pRow3.push_back(Vec4f(1.0f, 0.0f, 3.0f, 1.0f));
+	controlPoints.push_back(pRow3);
+
+	knotVectorU.push_back(0);
+	knotVectorU.push_back(0);
+	knotVectorU.push_back(0);
+	knotVectorU.push_back(.25);
+	knotVectorU.push_back(.25);
+	knotVectorU.push_back(.5);
+	knotVectorU.push_back(.5);
+	knotVectorU.push_back(.75);
+	knotVectorU.push_back(.75);
+	knotVectorU.push_back(1);
+	knotVectorU.push_back(1);
+	knotVectorU.push_back(1);
+
+	knotVectorV.push_back(0);
+	knotVectorV.push_back(0);
+	knotVectorV.push_back(0);
+	knotVectorV.push_back(1);
+	knotVectorV.push_back(1);
+	knotVectorV.push_back(1);
+
+	degree = 2;
+
+	transposeMesh();
+	isValidNURBS();
+}*/
+
+
+NURBS_Surface::NURBS_Surface(int example) {
+	//funktioniert
+	if (example == 0) {
+		std::vector<Vec4f> pRow1;
+		pRow1.push_back(Vec4f(1.0f, 1.0, 0.0f, 0.7071f));
+		pRow1.push_back(Vec4f(0.0f, 1.0f, 0.0f, 1.0f));
+		pRow1.push_back(Vec4f(-1.0f, 1.0f, 0.0f, 0.7071f));
+		controlPoints.push_back(pRow1);
+
+		std::vector<Vec4f> pRow2;
+		pRow2.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f));
+		pRow2.push_back(Vec4f(0.0f, 0.0f, 2.0f, 1.0f));
+		pRow2.push_back(Vec4f(-1.0f, 0.0f, 0.0f, 1.0f));
+		controlPoints.push_back(pRow2);
+
+		std::vector<Vec4f> pRow3;
+		pRow3.push_back(Vec4f(1.0f, -1.0f, 0.0f, 0.7071f));
+		pRow3.push_back(Vec4f(0.0f, -1.0f, 0.0f, 1.0f));
+		pRow3.push_back(Vec4f(-1.0f, -1.0f, 0.0f, 0.7071f));
+		controlPoints.push_back(pRow3);
+
+
+		knotVectorU.push_back(0.0f);
+		knotVectorU.push_back(0.0f);
+		knotVectorU.push_back(0.0f);
+		knotVectorU.push_back(1.0f);
+		knotVectorU.push_back(1.0f);
+		knotVectorU.push_back(1.0f);
+
+		knotVectorV.push_back(0.0f);
+		knotVectorV.push_back(0.0f);
+		knotVectorV.push_back(0.0f);
+		knotVectorV.push_back(1.0f);
+		knotVectorV.push_back(1.0f);
+		knotVectorV.push_back(1.0f);
+
+		degree = 2;
+		transposeMesh();
+		isValidNURBS();
+	}
+	else if (example == 1) {
+		// test surface: quarter cylinder
+		std::vector<Vec4f> pRow1;
+		pRow1.push_back(Vec4f(0.0f, 1.0f, 0.0f, 1.0f));
+		pRow1.push_back(Vec4f(1.0f, 1.0f, 0.0f, 1.0f));
+		pRow1.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f) * 2.0f);
+		controlPoints.push_back(pRow1);
+
+		std::vector<Vec4f> pRow2;
+		pRow2.push_back(Vec4f(0.0f, 2.0f, -1.0f, 1.0f));
+		pRow2.push_back(Vec4f(2.0f, 2.0f, -1.0f, 1.0f) * 6.0f);
+		pRow2.push_back(Vec4f(2.0f, 0.0f, -1.0f, 1.0f) * 2.0f);
+		controlPoints.push_back(pRow2);
+
+		std::vector<Vec4f> pRow3;
+		pRow3.push_back(Vec4f(0.0f, 1.0f, -2.0f, 1.0f));
+		pRow3.push_back(Vec4f(1.0f, 1.0f, -2.0f, 1.0f));
+		pRow3.push_back(Vec4f(1.0f, 0.0f, -2.0f, 1.0f) * 2.0f);
+		controlPoints.push_back(pRow3);
+
+		knotVectorU.push_back(0.0f);
+		knotVectorU.push_back(0.0f);
+		knotVectorU.push_back(0.0f);
+		knotVectorU.push_back(1.0f);
+		knotVectorU.push_back(1.0f);
+		knotVectorU.push_back(1.0f);
+
+		knotVectorV.push_back(0.0f);
+		knotVectorV.push_back(0.0f);
+		knotVectorV.push_back(0.0f);
+		knotVectorV.push_back(1.0f);
+		knotVectorV.push_back(1.0f);
+		knotVectorV.push_back(1.0f);
+
+		degree = 2;
+
+		transposeMesh();
+		isValidNURBS();
+	}
+}
+/*
+NURBS_Surface::NURBS_Surface() {
+	std::vector<Vec4f> pRow1;
+	pRow1.push_back(Vec4f(0.0f, 0.0f, 0.0f, 1.0f));
+	pRow1.push_back(Vec4f(0.0f, 0.5f, 0.0f, 0.7071f));
+	pRow1.push_back(Vec4f(0.0f, 1.0f, 0.0f, 1.0f));
+	pRow1.push_back(Vec4f(0.5f, 1.0f, 0.0f, 0.7071f));
+	pRow1.push_back(Vec4f(1.0f, 1.0f, 0.0f, 1.0f));
+	pRow1.push_back(Vec4f(1.0f, 0.5f, 0.0f, 0.7071f));
+	pRow1.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f));
+	pRow1.push_back(Vec4f(0.5f, 0.0f, 0.0f, 0.7071f));
+	controlPoints.push_back(pRow1);
+
+	std::vector<Vec4f> pRow2;
+	pRow2.push_back(Vec4f(0.0f, 0.0f, 0.5f, 1.0f));
+	pRow2.push_back(Vec4f(0.0f, 0.5f, 0.5f, 0.7071f));
+	pRow2.push_back(Vec4f(0.0f, 1.0f, 0.5f, 1.0f));
+	pRow2.push_back(Vec4f(0.5f, 1.0f, 0.5f, 0.7071f));
+	pRow2.push_back(Vec4f(1.0f, 1.0f, 0.5f, 1.0f));
+	pRow2.push_back(Vec4f(1.0f, 0.5f, 0.5f, 0.7071f));
+	pRow2.push_back(Vec4f(1.0f, 0.0f, 0.5f, 1.0f));
+	pRow2.push_back(Vec4f(0.5f, 0.0f, 0.5f, 0.7071f));
+	controlPoints.push_back(pRow2);
+
+	std::vector<Vec4f> pRow3;
+	pRow3.push_back(Vec4f(0.0f, 0.0f, 1.0f, 1.0f));
+	pRow3.push_back(Vec4f(0.0f, 0.5f, 1.0f, 0.7071f));
+	pRow3.push_back(Vec4f(0.0f, 1.0f, 1.0f, 1.0f));
+	pRow3.push_back(Vec4f(0.5f, 1.0f, 1.0f, 0.7071f));
+	pRow3.push_back(Vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+	pRow3.push_back(Vec4f(1.0f, 0.5f, 1.0f, 0.7071f));
+	pRow3.push_back(Vec4f(1.0f, 0.0f, 1.0f, 1.0f));
+	pRow3.push_back(Vec4f(0.5f, 0.0f, 1.0f, 0.7071f));
+	controlPoints.push_back(pRow3);
+
+	knotVectorU.push_back(0.0f);
+	knotVectorU.push_back(0.0f);
+	knotVectorU.push_back(0.0f);
+	knotVectorU.push_back(0.1666f);
+	knotVectorU.push_back(0.3332f);
+	knotVectorU.push_back(0.4998f);
+	knotVectorU.push_back(0.6664f);
+	knotVectorU.push_back(0.833f);
+	knotVectorU.push_back(1.0f);
+	knotVectorU.push_back(1.0f);
+	knotVectorU.push_back(1.0f);
+
+	knotVectorV.push_back(0.0f);
+	knotVectorV.push_back(0.0f);
+	knotVectorV.push_back(0.0f);
+	knotVectorV.push_back(1.0f);
+	knotVectorV.push_back(1.0f);
+	knotVectorV.push_back(1.0f);
+
+	degree = 2;
+
+	transposeMesh();
+	isValidNURBS();
+}*/
+
+
 
 NURBS_Surface::NURBS_Surface(const std::vector<std::vector<Vec4f>>& controlPoints_, const std::vector<float>& knotVectorU_, const std::vector<float>& knotVectorV_, const unsigned int degree_)
 	: controlPoints(controlPoints_)
@@ -107,16 +320,20 @@ Vec4f NURBS_Surface::evaluteDeBoor(const float u, const float v, Vec4f& tangentU
 	if (!isValidNURBS())
 		return Vec4f();
 
-	// TODO: evaluate the surface by evaluating curves
+	// TO DO: evaluate the surface by evaluating curves
 	// ===============================================
-	NURBSCurve tmp;
+
+	NURBSCurve tmp = NURBSCurve(controlPoints[0], knotVectorU, degree); // to avoid is valid nurbs print
 	std::vector<Vec4f> ControlPointsTmp = std::vector<Vec4f>();
 //	Vec4f& dummyTangent = tangentU;
 
 	// evaluate the patch at u in all rows
 	for (int i = 0; i < controlPoints.size(); i++) {
+
 		tmp = NURBSCurve(controlPoints[i], knotVectorU, degree);
-		Vec4f pointU = tmp.evaluteDeBoor(u, tangentV);
+
+		Vec4f pointU = tmp.evaluteDeBoor(u, tangentV); // dummy tangentV
+
 		ControlPointsTmp.push_back(pointU);
 	}
 
@@ -124,13 +341,12 @@ Vec4f NURBS_Surface::evaluteDeBoor(const float u, const float v, Vec4f& tangentU
 	tmp = NURBSCurve(ControlPointsTmp, knotVectorV, degree);
 	evaluatedPoint = tmp.evaluteDeBoor(v, tangentV);
 
-
 	// evaluate the patch at v in all columns
 	ControlPointsTmp.clear();
-	
+
 	for (int i = 0; i < controlPoints.size(); i++) {
 		tmp = NURBSCurve(controlPointsTransposed[i], knotVectorV, degree);
-		Vec4f pointV = tmp.evaluteDeBoor(v, tangentU);
+		Vec4f pointV = tmp.evaluteDeBoor(v, tangentU); // dummyTangentU
 		ControlPointsTmp.push_back(pointV);
 	}
 
@@ -166,6 +382,7 @@ std::ostream& operator<< (std::ostream& os, NURBS_Surface& nurbsSurface)
 
 void NURBS_Surface::transposeMesh()
 {
+	controlPointsTransposed = controlPoints;
 	for (int i = 0; i < controlPoints.size(); i++) {
 
 		for (int j = 0; j < controlPoints.size(); j++) {
