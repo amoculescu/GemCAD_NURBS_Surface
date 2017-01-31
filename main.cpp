@@ -122,7 +122,9 @@ void calculatePoints()
 	NURBS_Surface surf = NURBS_Surface(0);
 	NURBS_Surface surf1 = NURBS_Surface(1);
 	NURBSs.push_back(surf);
-	NURBSs.push_back(surf1);
+	NURBSs.push_back(surf1); 
+	NURBS_Surface surf2 = NURBS_Surface(2);
+	NURBSs.push_back(surf2);
 
 // calculate Points & normals for each NURBS
 

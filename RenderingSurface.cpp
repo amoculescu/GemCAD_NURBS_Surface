@@ -148,7 +148,7 @@ void drawNURBSSurface(std::vector<Vec4f> &points, const std::vector<Vec3f> &norm
 		glColor3f(0.99f, 0.99f, 0.99f);
 		// TODO: draw surface with quads
 		// =====================================================
-		for (int i = 0; i < points.size() - numPointsV - 2; i = i++) {
+		for (int i = 0; i < points.size() - numPointsV - 2; i++) {
 			Vec4f hpoint1 = points[i].homogenized();
 			Vec4f hpoint2 = points[i + 1].homogenized();
 			Vec4f hpoint3 = points[numPointsV + i + 1].homogenized();
