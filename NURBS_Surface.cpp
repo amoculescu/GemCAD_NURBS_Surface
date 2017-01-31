@@ -199,41 +199,41 @@ NURBS_Surface::NURBS_Surface(int example) {
 
 		std::vector<Vec4f> pRow1;
 		pRow1.push_back(Vec4f(0.0f, 1.0f, 0.0f, 1.0f));
-		pRow1.push_back(Vec4f(1.0f, 1.0f, 0.0f, 1.0f / sqrtf(2.0f)));
+		pRow1.push_back(Vec4f(1.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f), 0.0f, 1.0f / sqrtf(2.0f)));
 		pRow1.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f));
-		pRow1.push_back(Vec4f(1.0f, -1.0f, 0.0f, 1.0f / sqrtf(2.0f)));
+		pRow1.push_back(Vec4f(1.0f / sqrtf(2.0f), -1.0f / sqrtf(2.0f), 0.0f, 1.0f / sqrtf(2.0f)));
 		pRow1.push_back(Vec4f(0.0f, -1.0f, 0.0f, 1.0f));
 		controlPoints.push_back(pRow1);
 
 		std::vector<Vec4f> pRow2;
 		pRow2.push_back(Vec4f(0.0f, 1.0f, 0.5f, 1.0f));
-		pRow2.push_back(Vec4f(1.0f, 1.0f, 0.5f, 1.0f / sqrtf(2.0f)));
+		pRow2.push_back(Vec4f(1.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f), 0.5f / sqrtf(2.0f), 1.0f / sqrtf(2.0f)));
 		pRow2.push_back(Vec4f(1.0f, 0.0f, 0.5f, 1.0f));
-		pRow2.push_back(Vec4f(1.0f, -1.0f, 0.5f, 1.0f / sqrtf(2.0f)));
+		pRow2.push_back(Vec4f(1.0f / sqrtf(2.0f), -1.0f / sqrtf(2.0f), 0.5f / sqrtf(2.0f), 1.0f / sqrtf(2.0f)));
 		pRow2.push_back(Vec4f(0.0f, -1.0f, 0.5f, 1.0f));
 		controlPoints.push_back(pRow2);
 
 		std::vector<Vec4f> pRow3;
 		pRow3.push_back(Vec4f(0.0f, 1.0f, 1.0f, 1.0f));
-		pRow3.push_back(Vec4f(1.0f, 1.0f, 1.0f, 1.0f / sqrtf(2.0f)));
+		pRow3.push_back(Vec4f(1.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f)));
 		pRow3.push_back(Vec4f(1.0f, 0.0f, 1.0f, 1.0f));
-		pRow3.push_back(Vec4f(1.0f, -1.0f, 1.0f, 1.0f / sqrtf(2.0f)));
+		pRow3.push_back(Vec4f(1.0f / sqrtf(2.0f), -1.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f)));
 		pRow3.push_back(Vec4f(0.0f, -1.0f, 1.0f, 1.0f));
 		controlPoints.push_back(pRow3);
 
 		std::vector<Vec4f> pRow4;
 		pRow4.push_back(Vec4f(0.0f, 1.0f, 1.5f, 1.0f));
-		pRow4.push_back(Vec4f(1.0f, 1.0f, 1.5f, 1.0f / sqrtf(2.0f)));
+		pRow4.push_back(Vec4f(1.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f), 1.5f / sqrtf(2.0f), 1.0f / sqrtf(2.0f)));
 		pRow4.push_back(Vec4f(1.0f, 0.0f, 1.5f, 1.0f));
-		pRow4.push_back(Vec4f(1.0f, -1.0f, 1.5f, 1.0f / sqrtf(2.0f)));
+		pRow4.push_back(Vec4f(1.0f / sqrtf(2.0f), -1.0f / sqrtf(2.0f), 1.5f / sqrtf(2.0f), 1.0f / sqrtf(2.0f)));
 		pRow4.push_back(Vec4f(0.0f, -1.0f, 1.5f, 1.0f));
 		controlPoints.push_back(pRow4);
 
 		std::vector<Vec4f> pRow5;
 		pRow5.push_back(Vec4f(0.0f, 1.0f, 2.0f, 1.0f));
-		pRow5.push_back(Vec4f(1.0f, 1.0f, 2.0f, 1.0f / sqrtf(2.0f)));
+		pRow5.push_back(Vec4f(1.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f), 2.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f)));
 		pRow5.push_back(Vec4f(1.0f, 0.0f, 2.0f, 1.0f));
-		pRow5.push_back(Vec4f(1.0f, -1.0f, 2.0f, 1.0f / sqrtf(2.0f)));
+		pRow5.push_back(Vec4f(1.0f / sqrtf(2.0f), -1.0f / sqrtf(2.0f), 2.0f / sqrtf(2.0f), 1.0f / sqrtf(2.0f)));
 		pRow5.push_back(Vec4f(0.0f, -1.0f, 2.0f, 1.0f));
 		controlPoints.push_back(pRow5);
 
@@ -264,13 +264,13 @@ NURBS_Surface::NURBS_Surface(int example) {
 	else if (example == 3) {
 		std::vector<Vec4f> pRow1;
 		pRow1.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f));
-		pRow1.push_back(Vec4f(1.0f, 1.0f, 0.0f, 0.7071f));
+		pRow1.push_back(Vec4f(0.7071f, 0.7071f, 0.0f, 0.7071f));
 		pRow1.push_back(Vec4f(0.0f, 1.0f, 0.0f, 1.0f));
-		pRow1.push_back(Vec4f(-1.0f, 1.0f, 0.0f, 0.7071f));
+		pRow1.push_back(Vec4f(-0.7071f, 0.7071f, 0.0f, 0.7071f));
 		pRow1.push_back(Vec4f(-1.0f, 0.0f, 0.0f, 1.0f));
-		pRow1.push_back(Vec4f(-1.0f, -1.0f, 0.0f, 0.7071f));
+		pRow1.push_back(Vec4f(-0.7071f, -0.7071f, 0.0f, 0.7071f));
 		pRow1.push_back(Vec4f(0.0f, -1.0f, 0.0f, 1.0f));
-		pRow1.push_back(Vec4f(1.0f, -1.0f, 0.0f, 0.7071f));
+		pRow1.push_back(Vec4f(0.7071f, -0.7071f, 0.0f, 0.7071f));
 		pRow1.push_back(Vec4f(1.0f, 0.0f, 0.0f, 1.0f));
 		controlPoints.push_back(pRow1);
 
@@ -288,7 +288,7 @@ NURBS_Surface::NURBS_Surface(int example) {
 		for (int i = 0; i < pRow1.size(); i++)
 		{
 			
-			pRow2[i].z += 1;
+			pRow2[i].z += 0.1;
 			
 		}
 		controlPoints.push_back(pRow2);
@@ -297,7 +297,7 @@ NURBS_Surface::NURBS_Surface(int example) {
 
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow3[i].z += 1;
+			pRow3[i].z += 0.1;
 		}
 		controlPoints.push_back(pRow3);
 
@@ -305,28 +305,28 @@ NURBS_Surface::NURBS_Surface(int example) {
 
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow4[i].z += 1;
+			pRow4[i].z += 0.1;
 		}
 		controlPoints.push_back(pRow4);
 		pRow5 = pRow4;
 
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow5[i].z += 1;
+			pRow5[i].z += 0.1;
 		}
 		controlPoints.push_back(pRow5);
 		pRow6 = pRow5;
 
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow6[i].z += 1;
+			pRow6[i].z += 0.1;
 		}
 		controlPoints.push_back(pRow6);
 		pRow7 = pRow6;
 
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow7[i].z += 1;
+			pRow7[i].z += 0.1;
 		}
 		controlPoints.push_back(pRow7);
 
@@ -334,7 +334,7 @@ NURBS_Surface::NURBS_Surface(int example) {
 
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow8[i].z += 1;
+			pRow8[i].z += 0.1;
 		}
 		controlPoints.push_back(pRow8);
 		
@@ -342,7 +342,7 @@ NURBS_Surface::NURBS_Surface(int example) {
 
 		for (int i = 0; i < pRow1.size(); i++)
 		{
-			pRow9[i].z += 1;
+			pRow9[i].z += 0.1;
 		}
 		controlPoints.push_back(pRow9);
 
